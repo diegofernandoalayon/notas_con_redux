@@ -1,17 +1,62 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM, { render } from 'react-dom';
+import { createStore } from 'redux'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const noteReducer = (state = [], action) => {
+  if(action.type === '@notes/created') {
+    return state.concat(action.payload)
+  }
+}
+const store = createStore(noteReducer)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+store.dispatch({
+  type: '@notes/created',
+  payload: {
+    content: 'hola hola nota hona',
+    important: true,
+    id: 1
+  }
+})
+store.dispatch({
+  type: '@notes/created',
+  payload: {
+    content: 'tengo hambre 2',
+    important: false,
+    id: 2
+  }
+})
+
+const App = () => {
+  const state = store.getState()
+
+  return (
+    <ul>
+      {
+        state.map((note) => {
+          return <li key={note.id}>
+            {note.content}
+            <strong>
+              {
+                note.important
+                  ? ' important'
+                  : ' not important'
+              }
+            </strong>
+          </li>
+        })
+      }
+    </ul>
+  )
+}
+
+const renderApp = () => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
+renderApp()
+store.subscribe(renderApp)
+
