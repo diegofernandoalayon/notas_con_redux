@@ -1,16 +1,20 @@
 import { createNote, toggleImportanceOf } from './reducers/noteReducer';
 
-const App = ({store}) => {
-  const state = store.getState()
+import{ useSelector, useDispatch} from 'react-redux'
+
+const App = () => {
+  // const store = useSelector(state => state)
+  const notes = useSelector(state => state) // de esta manera nos podemos suscribir a cierta parte del estado 
+  const dispatch = useDispatch()
   const addNote = (event) => {
     event.preventDefault()
     const {target} = event
     const content = target.note.value
     target.note.value=''
-    store.dispatch(createNote(content))
+    dispatch(createNote(content))
   }
   const toggleImportant = (id) => {
-    store.dispatch(toggleImportanceOf(id))
+    dispatch(toggleImportanceOf(id))
   }
   return (
     <div>
@@ -20,7 +24,7 @@ const App = ({store}) => {
       </form>
       <ul>
         {
-          state.map((note) => {
+          notes.map((note) => {
             return <li key={note.id} onClick={() => toggleImportant(note.id)}>
               {note.content}
               <strong>
