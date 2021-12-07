@@ -5,23 +5,26 @@ import { noteReducer } from './reducers/noteReducer';
 
 const store = createStore(noteReducer)
 
-// store.dispatch({
-//   type: '@notes/created',
-//   payload: {
-//     content: 'hola hola nota hona',
-//     important: true,
-//     id: 1
-//   }
-// })
-// store.dispatch({
-//   type: '@notes/created',
-//   payload: {
-//     content: 'tengo hambre 2',
-//     important: false,
-//     id: 2
-//   }
-// })
 const generateId = () => Math.floor(Math.random() * 9999999999) + 1
+
+const createNote = (content) => {
+  return {
+    type:'@notes/created',
+      payload: {
+        content,
+        important: false,
+        id: generateId()
+      }
+  }
+}
+const toggleImportanceOf = (id) => {
+  return { 
+    type: '@notes/toggle_important',
+    payload: {
+      id
+    }
+  }
+}
 
 const App = () => {
   const state = store.getState()
@@ -30,22 +33,10 @@ const App = () => {
     const {target} = event
     const content = target.note.value
     target.note.value=''
-    store.dispatch({
-      type:'@notes/created',
-      payload: {
-        content,
-        important: false,
-        id: generateId()
-      }
-    })
+    store.dispatch(createNote(content))
   }
   const toggleImportant = (id) => {
-    store.dispatch({
-      type: '@notes/toggle_important',
-      payload: {
-        id
-      }
-    })
+    store.dispatch(toggleImportanceOf(id))
   }
   return (
     <div>
