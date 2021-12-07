@@ -1,5 +1,5 @@
 import { noteReducer } from "./noteReducer";
-
+import deepFreeze from 'deep-freeze'
 describe('noteReducer', () => {
   test('returns new state after action with toggle importance', () => {
     const state = [
@@ -15,11 +15,12 @@ describe('noteReducer', () => {
       }
     ]
     const action = {
-      type: '@note/toggle_importance',
+      type: '@notes/toggle_important',
       payload: {
         id: 2
       }
     }
+    deepFreeze(state)
     const newState = noteReducer(state,action)
 
     expect(newState).toHaveLength(2)
