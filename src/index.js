@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { createStore } from 'redux'
+import { noteReducer } from './reducers/noteReducer';
 
-const noteReducer = (state = [], action) => {
-  if(action.type === '@notes/created') {
-    return state.concat(action.payload)
-  }
-}
 const store = createStore(noteReducer)
 
 store.dispatch({
