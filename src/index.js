@@ -1,30 +1,10 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { createStore } from 'redux'
-import { noteReducer } from './reducers/noteReducer';
+import { noteReducer, createNote, toggleImportanceOf } from './reducers/noteReducer';
 
 const store = createStore(noteReducer)
 
-const generateId = () => Math.floor(Math.random() * 9999999999) + 1
-
-const createNote = (content) => {
-  return {
-    type:'@notes/created',
-      payload: {
-        content,
-        important: false,
-        id: generateId()
-      }
-  }
-}
-const toggleImportanceOf = (id) => {
-  return { 
-    type: '@notes/toggle_important',
-    payload: {
-      id
-    }
-  }
-}
 
 const App = () => {
   const state = store.getState()
