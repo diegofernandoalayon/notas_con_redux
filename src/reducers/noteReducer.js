@@ -24,11 +24,11 @@ const generateId = () => Math.floor(Math.random() * 9999999999) + 1
 export const createNote = (content) => {
   return {
     type:'@notes/created',
-      payload: {
-        content,
-        important: false,
-        id: generateId()
-      }
+    payload: {
+      content,
+      important: false,
+      id: generateId()
+    }
   }
 }
 export const toggleImportanceOf = (id) => {
