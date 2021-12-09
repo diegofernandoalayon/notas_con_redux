@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { toggleImportanceOf } from "../reducers/noteReducer"
 
 export default function Notes() {
-  const notes = useSelector(state => state) // de esta manera nos podemos suscribir a cierta parte del estado 
+  const notes = useSelector(state => state.notes) // de esta manera nos podemos suscribir a cierta parte del estado 
+  console.log(notes)
   const dispatch = useDispatch()
   
   const toggleImportant = (id) => {

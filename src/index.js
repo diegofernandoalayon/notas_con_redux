@@ -3,6 +3,7 @@ import ReactDOM, { render } from 'react-dom';
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux';
 import { noteReducer } from './reducers/noteReducer';
+import { filterReducer } from './reducers/filterReducer';
 import App from './App';
 const reducer = combineReducers({
   notes: noteReducer,
