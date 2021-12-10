@@ -1,25 +1,22 @@
 
-
 export const noteReducer = (state = [], action) => {
-  if(action.type === '@notes/init'){
+  if (action.type === '@notes/init') {
     return action.payload
   }
-  if(action.type === '@notes/created') {
+  if (action.type === '@notes/created') {
     return state.concat(action.payload)
   }
   if (action.type === '@notes/toggle_important') {
-    const {id} = action.payload
+    const { id } = action.payload
     return state.map(note => {
-      if(note.id === id) {
+      if (note.id === id) {
         return {
           ...note,
           important: !note.important
         }
-       
-      } 
+      }
       return note
     })
-    
   }
   return state
 }
@@ -28,7 +25,7 @@ const generateId = () => Math.floor(Math.random() * 9999999999) + 1
 
 export const createNote = (content) => {
   return {
-    type:'@notes/created',
+    type: '@notes/created',
     payload: {
       content,
       important: false,
@@ -37,7 +34,7 @@ export const createNote = (content) => {
   }
 }
 export const toggleImportanceOf = (id) => {
-  return { 
+  return {
     type: '@notes/toggle_important',
     payload: {
       id
