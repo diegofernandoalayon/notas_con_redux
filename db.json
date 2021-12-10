@@ -1,0 +1,14 @@
+{
+  "notes" : [
+    {
+      "content": "bienvenidos a la clase",
+      "important": true,
+      "id": 1
+    },
+    {
+      "content": "gracias",
+      "important": false,
+      "id": 2
+    }
+  ]
+}
