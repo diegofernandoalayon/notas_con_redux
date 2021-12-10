@@ -1,4 +1,4 @@
-import { noteReducer } from './reducers/noteReducer';
+import { initNotes, noteReducer } from './reducers/noteReducer';
 import { filterReducer } from './reducers/filterReducer';
 import { createStore, combineReducers } from 'redux'
 
@@ -14,8 +14,5 @@ export const store = createStore(
   composeWithDevTools())
 
 getAll().then(notes => {
-  notes.forEach(note => {
-    console.log(store)
-    store.dispatch({type: '@notes/created', payload: note})
-  })
+  store.dispatch(initNotes(notes))
 })

@@ -1,6 +1,9 @@
 
 
 export const noteReducer = (state = [], action) => {
+  if(action.type === '@notes/init'){
+    return action.payload
+  }
   if(action.type === '@notes/created') {
     return state.concat(action.payload)
   }
@@ -39,5 +42,11 @@ export const toggleImportanceOf = (id) => {
     payload: {
       id
     }
+  }
+}
+export const initNotes = notes => {
+  return {
+    type: '@notes/init',
+    payload: notes
   }
 }
