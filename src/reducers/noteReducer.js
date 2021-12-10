@@ -21,16 +21,12 @@ export const noteReducer = (state = [], action) => {
   return state
 }
 
-const generateId = () => Math.floor(Math.random() * 9999999999) + 1
+// const generateId = () => Math.floor(Math.random() * 9999999999) + 1
 
-export const createNote = (content) => {
+export const createNote = note => {
   return {
     type: '@notes/created',
-    payload: {
-      content,
-      important: false,
-      id: generateId()
-    }
+    payload: note
   }
 }
 export const toggleImportanceOf = (id) => {

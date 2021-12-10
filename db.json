@@ -1,5 +1,5 @@
 {
-  "notes" : [
+  "notes": [
     {
       "content": "bienvenidos a la clase",
       "important": true,
@@ -9,6 +9,43 @@
       "content": "gracias",
       "important": false,
       "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "todo": "",
+      "id": 9
+    },
+    {
+      "content": "todo el mundo",
+      "important": false,
+      "id": 10
+    },
+    {
+      "content": "ahora",
+      "important": false,
+      "id": 11
+    },
+    {
+      "content": "",
+      "important": false,
+      "id": 12
     }
   ]
 }
