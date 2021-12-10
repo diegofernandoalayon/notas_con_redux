@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM, { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux';
 import { noteReducer } from './reducers/noteReducer';
