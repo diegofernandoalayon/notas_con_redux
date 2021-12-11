@@ -1,3 +1,4 @@
+import { getAll } from '../services/notes'
 
 export const noteReducer = (state = [], action) => {
   if (action.type === '@notes/init') {
@@ -37,9 +38,12 @@ export const toggleImportanceOf = (id) => {
     }
   }
 }
-export const initNotes = notes => {
-  return {
-    type: '@notes/init',
-    payload: notes
+export const initNotes = () => {
+  return async (dispatch) => {
+    const notes = await getAll()
+    dispatch({
+      type: '@notes/init',
+      payload: notes
+    })
   }
 }
